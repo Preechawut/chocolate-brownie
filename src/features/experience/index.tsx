@@ -46,12 +46,6 @@ export function Experience({ compact, limit }: { compact?: boolean; limit?: numb
                           </span>
                         )}
                       </h3>
-                      {exp.current && (
-                        <span className="inline-flex items-center gap-1 border border-emerald-500/40 bg-emerald-500/10 px-2 py-[2px] text-[10px] font-bold text-emerald-500">
-                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                          Working
-                        </span>
-                      )}
                     </div>
                     <p className="text-[13px] font-medium text-t2">{exp.role}</p>
                   </div>

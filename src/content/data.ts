@@ -82,6 +82,47 @@ export const quotes: Quote[] = [
   { id: '3', text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', author: 'Amet Consectetur' },
 ]
 
+// ── Repos ─────────────────────────────────────────────────
+export interface Repo {
+  id: string
+  name: string
+  description: string
+  language: string
+  languageColor: string
+  tech: string[]
+  githubUrl: string
+}
+
+export const repos: Repo[] = [
+  {
+    id: 'repo-1',
+    name: 'chocolate-brownie',
+    description: 'Personal portfolio built with Next.js and Tailwind CSS.',
+    language: 'TypeScript',
+    languageColor: '#3178c6',
+    tech: ['TypeScript', 'Next.js', 'Tailwind CSS'],
+    githubUrl: 'https://github.com',
+  },
+  {
+    id: 'repo-2',
+    name: 'lorem-ipsum-api',
+    description: 'REST API for lorem ipsum generation with custom endpoints.',
+    language: 'Go',
+    languageColor: '#00ADD8',
+    tech: ['Go', 'PostgreSQL', 'Docker'],
+    githubUrl: 'https://github.com',
+  },
+  {
+    id: 'repo-3',
+    name: 'dolor-sit-cli',
+    description: 'Command-line tool for automating lorem ipsum workflows.',
+    language: 'Python',
+    languageColor: '#3572A5',
+    tech: ['Python', 'Click', 'SQLite'],
+    githubUrl: 'https://github.com',
+  },
+]
+
 // ── Projects ──────────────────────────────────────────────
 export const projects: Project[] = [
   {

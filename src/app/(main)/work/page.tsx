@@ -8,7 +8,7 @@ export default function WorkPage() {
       <section className="px-6">
         <div className="mx-auto max-w-2xl py-10">
           <p className="section-heading">Career</p>
-          <h1 className="text-3xl font-black tracking-[-0.04em] text-t1 mb-1">Experience</h1>
+          <h1 className="text-3xl font-normal tracking-[-0.04em] text-t1 mb-1" style={{ WebkitTextStroke: '0.5px currentColor' }}>Experience</h1>
           <p className="text-[14px] text-t2">My work history, roles, and the things I've shipped.</p>
         </div>
       </section>

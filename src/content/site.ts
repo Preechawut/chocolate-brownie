@@ -1,13 +1,14 @@
 // ── Site profile ─────────────────────────────────────────
 export const SITE = {
-  name: 'Lorem Ipsum',
+  name: 'GAIN',
   initials: 'LI',
-  role: 'Lorem Ipsum Developer',
+  role: 'developer',
   location: 'Lorem Ipsum, LI',
   email: 'lorem.ipsum@example.com',
   bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   available: true,
   avatar: '',
+  googleDriveFileId: '1234567890abcdefghijklmnopqrstuvwxyz',
 }
 
 // ── Social links ─────────────────────────────────────────

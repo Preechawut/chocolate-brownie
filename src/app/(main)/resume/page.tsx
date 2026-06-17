@@ -1,104 +1,66 @@
-import { SITE, STACK } from '@/content/site'
-import { experiences, projects } from '@/content/data'
-import { PrintButton } from './PrintButton'
+'use client'
+
+import { useState } from 'react'
+import { Button } from '@/shared/components/ui/Button'
+import { SITE } from '@/content/site'
 
 export default function ResumePage() {
+  const [isLoading, setIsLoading] = useState(true)
+  const embedUrl = `https://drive.google.com/file/d/${SITE.googleDriveFileId}/preview`
+  const viewUrl = `https://drive.google.com/file/d/${SITE.googleDriveFileId}/view?usp=sharing`
+
   return (
     <main>
       <div className="mx-auto max-w-2xl px-6 py-10 print:py-0 print:px-0 print:max-w-none">
-
-        {/* Print button — hidden when printing */}
-        <div className="mb-8 flex items-center justify-between print:hidden">
-          <p className="section-heading">Resume</p>
-          <PrintButton />
+        
+        {/* Header: title + action button matching site aesthetics */}
+        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between print:hidden">
+          <div>
+            <p className="section-heading">Profile</p>
+            <h1 className="text-3xl font-black tracking-[-0.04em] text-t1 mb-1">Resume</h1>
+            <p className="text-[14px] text-t2">My professional background and work history.</p>
+          </div>
+          <div className="shrink-0 pb-1">
+            <Button href={viewUrl} external variant="solid" size="sm">
+              Open in Drive
+            </Button>
+          </div>
         </div>
 
-        {/* Header: role + contact (no name, no address) */}
-        <header className="mb-8 border-b border-[var(--border)] pb-6">
-          <p className="text-[22px] font-black tracking-[-0.03em] text-t1">{SITE.role}</p>
-          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[13px] text-t2">
-            <a href={`mailto:${SITE.email}`} className="hover:text-t1">{SITE.email}</a>
-            <span>{SITE.bio}</span>
-          </div>
-        </header>
+        {/* PDF / Document Embed Container matching the retro/flat style */}
+        <div className="relative w-full overflow-hidden border border-[var(--border)] bg-black/5 dark:bg-white/[0.02] aspect-[1/1.414] min-h-[500px]">
+          {/* Loading state indicator */}
+          {isLoading && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-[var(--bg)] gap-3">
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-t1 border-t-transparent" />
+              <p className="text-xs text-t3 animate-pulse">กำลังโหลดเอกสาร Resume...</p>
+            </div>
+          )}
 
-        {/* Experience */}
-        <section className="mb-8">
-          <h2 className="section-heading">Experience</h2>
-          <div className="space-y-6">
-            {experiences.map((exp) => (
-              <div key={exp.id}>
-                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-                  <div>
-                    <span className="text-[14px] font-black text-t1">
-                      {exp.current ? '██████' : exp.company}
-                    </span>
-                    <span className="mx-2 text-t3">·</span>
-                    <span className="text-[13px] font-medium text-t2">{exp.role}</span>
-                  </div>
-                  <span className="text-[12px] text-t3">{exp.period}</span>
-                </div>
-                <ul className="space-y-1 mb-2">
-                  {exp.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-[13px] leading-6 text-t2">
-                      <span className="mt-[10px] h-1 w-1 shrink-0 bg-t3" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-1.5">
-                  {exp.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="border border-[var(--border2)] px-2 py-[2px] text-[11px] font-medium text-t3"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+          <iframe
+            src={embedUrl}
+            className="h-full w-full border-none"
+            title="Google Drive Resume Viewer"
+            allow="autoplay"
+            onLoad={() => setIsLoading(false)}
+          />
+        </div>
 
-        {/* Projects */}
-        <section className="mb-8">
-          <h2 className="section-heading">Projects</h2>
-          <div className="space-y-5">
-            {projects.map((p) => (
-              <div key={p.id}>
-                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-                  <span className="text-[14px] font-black text-t1">{p.name}</span>
-                  <span className="text-[12px] text-t3">{p.year}</span>
-                </div>
-                <p className="text-[13px] text-t2 mb-2">{p.description}</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {p.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="border border-[var(--border2)] px-2 py-[2px] text-[11px] font-medium text-t3"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Skills */}
-        <section>
-          <h2 className="section-heading">Skills</h2>
-          <div className="space-y-2">
-            {STACK.map(({ category, items }) => (
-              <div key={category} className="flex gap-3 text-[13px]">
-                <span className="w-32 shrink-0 font-bold text-t1">{category}</span>
-                <span className="text-t2">{items.join(', ')}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* Info helper for mobile readers */}
+        <div className="mt-4 text-center sm:hidden print:hidden">
+          <p className="text-xs text-t3">
+            หากเปิดอ่านไม่สะดวก สามารถกดปุ่ม{' '}
+            <a
+              href={viewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline font-bold text-t2 hover:text-t1"
+            >
+              Open in Drive
+            </a>{' '}
+            เพื่อเปิดผ่านแอปพลิเคชันโดยตรงได้
+          </p>
+        </div>
 
       </div>
 
@@ -112,3 +74,5 @@ export default function ResumePage() {
     </main>
   )
 }
+
+

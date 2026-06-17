@@ -6,6 +6,7 @@ import { Button } from '@/shared/components/ui/Button'
 import { Checkbox } from '@/shared/components/ui/Checkbox'
 import { Dropdown } from '@/shared/components/ui/Dropdown'
 import { QuoteCard } from '@/features/quotes/QuoteCard'
+import { RepoCard } from '@/features/repos/RepoCard'
 import { Skills } from '@/features/skills'
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -24,9 +25,9 @@ function Label({ children }: { children: React.ReactNode }) {
 }
 
 const COLORS = [
-  { token: '--bg',           label: 'Background',      hex: '#fbfaf7 / #111111' },
-  { token: '--bg-soft',      label: 'Background Soft', hex: '#f4f2ee / #1a1a1a' },
-  { token: '--bg-mute',      label: 'Background Mute', hex: '#ebe8e2 / #222222' },
+  { token: '--bg',           label: 'Background',      hex: '#ffffff / #111111' },
+  { token: '--bg-soft',      label: 'Background Soft', hex: '#f5f5f5 / #1a1a1a' },
+  { token: '--bg-mute',      label: 'Background Mute', hex: '#ebebeb / #222222' },
   { token: '--surface',      label: 'Surface',         hex: '#ffffff / #161616' },
   { token: '--t1',           label: 'Text Primary',    hex: '#111111 / #f0ede8' },
   { token: '--t2',           label: 'Text Secondary',  hex: '#5f5f5a / #8a8780' },
@@ -208,6 +209,22 @@ export default function DesignPage() {
       <Section title="Quote Card">
         <QuoteCard quote={{ id: 'demo', text: 'Simplicity is the soul of efficiency.', author: 'Austin Freeman' }} />
         <Label>Spotlight reveal on hover — circle follows cursor — opposite theme color</Label>
+      </Section>
+
+      {/* Repo Card */}
+      <Section title="Repo Card">
+        <RepoCard
+          repo={{
+            id: 'demo',
+            name: 'chocolate-brownie',
+            description: 'Personal portfolio built with Next.js and Tailwind CSS.',
+            language: 'TypeScript',
+            languageColor: '#3178c6',
+            tech: ['TypeScript', 'Next.js', 'Tailwind CSS'],
+            githubUrl: 'https://github.com',
+          }}
+        />
+        <Label>Click to expand — tech badges + language dot + view source — GitHub icon links out</Label>
       </Section>
 
       {/* Star button */}

@@ -35,6 +35,20 @@ export function Hero() {
   const { toggle } = useTheme()
   const triggered = useRef(false)
   const [leaving, setLeaving] = useState(false)
+  const [roleIndex, setRoleIndex] = useState(0)
+  const [roleVisible, setRoleVisible] = useState(true)
+  const roles = ['Software', 'Backend', 'Full Stack']
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleVisible(false)
+      setTimeout(() => {
+        setRoleIndex((prev) => (prev + 1) % roles.length)
+        setRoleVisible(true)
+      }, 200)
+    }, 2500)
+    return () => clearInterval(interval)
+  }, [])
 
   function dismiss(scrollToTop = false) {
     if (triggered.current) return
@@ -86,7 +100,7 @@ export function Hero() {
             {/* Info */}
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-0.5">
-                <h1 className="text-[22px] font-black tracking-[-0.03em] text-t1 leading-tight">{site.name}</h1>
+                <h1 className="text-[22px] font-bold text-t1 leading-tight">{site.name}</h1>
               </div>
               <p className="text-[13px] text-t2 mb-3">
                 {site.role}
@@ -136,11 +150,11 @@ export function Hero() {
       </button>
 
       <section
-        className={`relative -mt-[60px] flex min-h-screen flex-col items-center justify-center px-6 text-center transition-opacity duration-500 ${leaving ? 'opacity-0' : 'opacity-100'}`}
+        className={`relative -mt-[60px] flex min-h-screen flex-col items-center justify-center px-6 text-left transition-opacity duration-500 ${leaving ? 'opacity-0' : 'opacity-100'}`}
       >
-        <div className="max-w-3xl animate-fade-up">
+        <div className="max-w-2xl w-full animate-fade-up text-left">
           {site.available && (
-            <div className="mb-6 flex justify-center">
+            <div className="mb-6 flex justify-start">
               <span className="flex items-center gap-1.5 border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-[11px] font-bold text-emerald-500">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                 Available for work
@@ -148,19 +162,34 @@ export function Hero() {
             </div>
           )}
 
-          <h1 className="mb-4 text-[clamp(42px,8vw,96px)] font-black leading-[0.95] tracking-[-0.04em] text-t1">
-            {site.name}
+          <h1 className="mb-4 text-[clamp(32px,5vw,64px)] font-bold leading-[0.95] tracking-normal text-t1">
+            Hello,I'm <br />
+            <span className="inline-block mt-3 bg-t1 text-bg px-6 py-2.5 uppercase tracking-wider">
+              {site.name}
+            </span>
           </h1>
 
-          <p className="mb-6 text-[clamp(16px,2.5vw,22px)] font-medium text-t2">
-            {site.role}
+          <p className="mb-6 text-[clamp(14px,1.8vw,18px)] font-medium text-t2">
+            I'm{' '}
+            <span
+              style={{
+                display: 'inline-block',
+                opacity: roleVisible ? 1 : 0,
+                transition: 'opacity 0.2s ease',
+                borderBottom: '2px solid currentColor',
+                paddingBottom: '0.5px',
+              }}
+            >
+              {roles[roleIndex]}
+            </span>
+            {' '}developer<span className='font-bold'>...</span>
           </p>
 
           {/* <p className="mx-auto mb-10 max-w-[520px] text-[15px] leading-7 text-t3">
             {site.bio}
           </p> */}
 
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-start gap-2">
             {socials.filter((s) => s.enabled !== false).map(({ label, href, external }) => (
               <a
                 key={label}
@@ -181,9 +210,9 @@ export function Hero() {
           onClick={() => dismiss(true)}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in"
           aria-label="Enter"
-          style={{ animation: 'fadeIn 0.4s ease both, blink 1.4s step-start 1s infinite' }}
+          style={{ animation: 'fadeIn 0.4s ease both, blink 2s step-start 0.2s infinite' }}
         >
-          <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-t3">
+          <span className="text-[14px] tracking-[0.18em] uppercase text-t3">
             press any key to continue
           </span>
         </button>

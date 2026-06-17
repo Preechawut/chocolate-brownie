@@ -38,10 +38,10 @@ export default async function BlogPostPage({ params }: Props) {
       <article className="px-6">
         <div className="mx-auto max-w-2xl py-10">
           <Link
-            href="/blog"
+            href="/"
             className="mb-10 flex items-center gap-2 text-[12px] font-bold text-t3 transition-colors hover:text-t1"
           >
-            ← Back to Blog
+            ← Back to Home
           </Link>
 
           <div className="mb-4 flex flex-wrap items-center gap-2">
