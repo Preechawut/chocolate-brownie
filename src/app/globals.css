@@ -1,7 +1,21 @@
 @font-face {
   font-family: 'Monocraft';
   src: url('https://cdn.jsdelivr.net/gh/IdreesInc/Monocraft@main/dist/Monocraft-ttf/Monocraft.ttf') format('truetype');
-  font-weight: normal;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Monocraft';
+  src: url('https://cdn.jsdelivr.net/gh/IdreesInc/Monocraft@main/dist/Monocraft-ttf/weights/Monocraft-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Monocraft';
+  src: url('https://cdn.jsdelivr.net/gh/IdreesInc/Monocraft@main/dist/Monocraft-ttf/weights/Monocraft-Black.ttf') format('truetype');
+  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
@@ -12,9 +26,9 @@
 
 :root {
   --font-monocraft: 'Monocraft', sans-serif;
-  --bg: #ffffff;
-  --bg-soft: #f5f5f5;
-  --bg-mute: #ebebeb;
+  --bg: #fbfaf7;
+  --bg-soft: #f4f2ee;
+  --bg-mute: #ebe8e2;
   --surface: #ffffff;
   --t1: #111111;
   --t2: #5f5f5a;
@@ -58,6 +72,7 @@ body {
     var(--bg);
   color: var(--t1);
   font-family: var(--font-monocraft), monospace;
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
 }
 

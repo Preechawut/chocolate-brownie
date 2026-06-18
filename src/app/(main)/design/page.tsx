@@ -25,9 +25,9 @@ function Label({ children }: { children: React.ReactNode }) {
 }
 
 const COLORS = [
-  { token: '--bg',           label: 'Background',      hex: '#ffffff / #111111' },
-  { token: '--bg-soft',      label: 'Background Soft', hex: '#f5f5f5 / #1a1a1a' },
-  { token: '--bg-mute',      label: 'Background Mute', hex: '#ebebeb / #222222' },
+  { token: '--bg',           label: 'Background',      hex: '#fbfaf7 / #111111' },
+  { token: '--bg-soft',      label: 'Background Soft', hex: '#f4f2ee / #1a1a1a' },
+  { token: '--bg-mute',      label: 'Background Mute', hex: '#ebe8e2 / #222222' },
   { token: '--surface',      label: 'Surface',         hex: '#ffffff / #161616' },
   { token: '--t1',           label: 'Text Primary',    hex: '#111111 / #f0ede8' },
   { token: '--t2',           label: 'Text Secondary',  hex: '#5f5f5a / #8a8780' },
@@ -224,7 +224,7 @@ export default function DesignPage() {
             githubUrl: 'https://github.com',
           }}
         />
-        <Label>Click to expand — tech badges + language dot + view source — GitHub icon links out</Label>
+        <Label>Card — click to expand tech badges + language dot + view source — GitHub icon links out</Label>
       </Section>
 
       {/* Star button */}

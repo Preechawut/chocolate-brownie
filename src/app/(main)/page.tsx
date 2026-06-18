@@ -9,6 +9,14 @@ import { getAllPosts } from '@/content/posts'
 import { quotes } from '@/content/data'
 import { PixelCat } from '@/shared/components/PixelCat'
 
+function SectionHeading({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  return (
+    <h2 className={`text-[20px] font-black tracking-[-0.01em] text-t1 ${className}`}>
+      {children}
+    </h2>
+  )
+}
+
 export default function HomePage() {
   const recentPosts = getAllPosts().slice(0, 2)
   const featuredQuote = quotes[0]
@@ -20,7 +28,7 @@ export default function HomePage() {
       {/* Skills */}
       <section className="border-t border-[var(--border)] px-6 py-10">
         <div className="mx-auto max-w-2xl">
-          <h2 className="text-[13px] font-black uppercase tracking-[0.08em] text-t1 mb-4">Skills</h2>
+          <SectionHeading className="mb-5">Skills</SectionHeading>
           <Skills />
         </div>
       </section>
@@ -28,7 +36,7 @@ export default function HomePage() {
       {/* Experience */}
       <section className="border-t border-[var(--border)] px-6 py-10">
         <div className="mx-auto max-w-2xl">
-          <h2 className="text-[13px] font-black uppercase tracking-[0.08em] text-t1 mb-4">Experience</h2>
+          <SectionHeading className="mb-5">Experience</SectionHeading>
           <div className="mt-0">
             <Experience limit={3} />
           </div>
@@ -46,7 +54,7 @@ export default function HomePage() {
       {/* Repos */}
       <section className="border-t border-[var(--border)] px-6 py-10">
         <div className="mx-auto max-w-2xl">
-          <h2 className="text-[13px] font-black uppercase tracking-[0.08em] text-t1 mb-2">Repos</h2>
+          <SectionHeading className="mb-3">Repos</SectionHeading>
           <Repos />
         </div>
       </section>
@@ -54,8 +62,8 @@ export default function HomePage() {
       {/* Recent Posts */}
       <section className="border-t border-[var(--border)] px-6 py-10">
         <div className="mx-auto max-w-2xl">
-          <div className="mb-6 flex items-baseline justify-between">
-            <h2 className="text-[13px] font-black uppercase tracking-[0.08em] text-t1">Recent Posts</h2>
+          <div className="mb-6 flex items-center justify-between">
+            <SectionHeading>Recent Posts</SectionHeading>
             <Link href="/blog" className="text-[12px] font-bold text-t2 transition-colors hover:text-t1">
               View all →
             </Link>
