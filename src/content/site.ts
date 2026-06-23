@@ -2,7 +2,7 @@
 export const SITE = {
   name: 'Preechawut Pothimakul',
   heroName: 'GAIN',
-  initials: 'LI',
+  initials: 'G',
   role: 'Software Developer',
   location: 'Bangkok, Thailand',
   email: 'gain.pcw@gmail.com',
