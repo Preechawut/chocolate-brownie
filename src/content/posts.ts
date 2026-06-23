@@ -51,6 +51,9 @@ function readPost(file: string): Post {
 }
 
 export function getAllPosts(): Post[] {
+  if (!fs.existsSync(POSTS_DIR)) {
+    return []
+  }
   const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith('.md'))
   return files
     .map(readPost)
