@@ -131,6 +131,15 @@ export const repos: Repo[] = [
     tech: ['TypeScript', 'Next.js', 'Tailwind CSS'],
     githubUrl: 'https://github.com/Preechawut/chocolate-brownie',
   },
+  {
+    id: 'repo-2',
+    name: 'mockmockk',
+    description: 'Self-hosted mock REST API server.',
+    language: 'Go',
+    languageColor: '#00ADD8',
+    tech: ['Go', 'PostgreSQL'],
+    githubUrl: 'https://github.com/Preechawut/mockmockk',
+  },
   // {
   //   id: 'repo-2',
   //   name: 'lorem-ipsum-api',
