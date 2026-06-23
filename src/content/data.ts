@@ -4,6 +4,12 @@
 // ─────────────────────────────────────────────────────────
 
 // ── Types ─────────────────────────────────────────────────
+export interface ExperienceProject {
+  name: string
+  description?: string
+  bullets: string[]
+}
+
 export interface Experience {
   id: string
   company: string
@@ -12,74 +18,96 @@ export interface Experience {
   current?: boolean
   description: string
   bullets: string[]
+  projects?: ExperienceProject[]
   tags: string[]
 }
 
 export type Skill = { id: string; name: string; category: string }
 export type Quote = { id: string; text: string; author: string }
 
-export interface Project {
-  id: string
-  name: string
-  tagline: string
-  description: string
-  features: string[]
-  tags: string[]
-  year: string
-  href: string
-  emoji: string
-}
-
 // ── Experience ────────────────────────────────────────────
 export const experiences: Experience[] = [
   {
-    id: 'lorem-1',
-    company: 'Lorem Ipsum Co.',
-    role: 'Lorem Ipsum Developer',
+    id: '1',
+    company: 'Enersys Co. Ltd.',
+    role: 'Software Developer',
     period: 'May 2025 – Present',
     current: true,
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum id eros at facilisis. Mauris egestas magna non tellus viverra scelerisque.',
+    description: 'Developed and optimized RESTful APIs, customized corporate management web applications, customized ERP modules, and built onboarding/registration workflows.',
     bullets: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      'Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
-      'Laboris nisi ut aliquip ex ea commodo consequat.',
-      'Duis aute irure dolor in reprehenderit in voluptate velit.',
+      'Write, test, and maintain clean, efficient, and reliable code.',
+      'Develop software solutions based on technical requirements and user needs.',
+      'Debug and troubleshoot issues in existing applications.',
     ],
-    tags: ['Lorem', 'Ipsum', 'Dolor', 'Sit', 'Amet'],
+    projects: [
+      {
+        name: 'Insurance Online Sale Open API Backend',
+        bullets: [
+          'Developed RESTful backend services for a digital insurance platform using Go/Fiber in a monorepo architecture.',
+          'Implemented workflows for customer identity verification.',
+          'Integrated backend services with external and third-party systems.',
+          'Worked in a backend environment using Argo CD, Kubernetes, and AWS for deployment and operations.',
+        ],
+      },
+      {
+        name: 'Fsmart Corporate System',
+        bullets: [
+          'Developed and customized web application for corporate data management, financial tracking, and reporting using Go and Next.js based on user and business requirements.',
+          'Worked in a vendor-managed GitLab CI/CD workflow across QAS, UAT, and production, including code quality and security checks with SonarQube and Coverity.',
+        ],
+      },
+      {
+        name: 'Odoo ERP',
+        bullets: [
+          'Customized ERP workflows to support internal business operations using Python.',
+          'Delivered feature enhancements and process improvements across related modules.',
+        ],
+      },
+      {
+        name: 'Trading Open Account App',
+        bullets: [
+          'Developed backend and mobile features for account registration and onboarding using Go and Flutter.',
+          'Implemented customer identity verification workflows for digital account opening.',
+        ],
+      },
+    ],
+    tags: ['Go', 'Python', 'Typescript', 'Odoo ERP', 'Flutter'],
   },
   {
-    id: 'lorem-2',
-    company: 'Dolor Sit Amet Corp.',
-    role: 'Lorem Ipsum Intern',
-    period: 'Nov 2024 – Mar 2025',
-    description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    id: '2',
+    company: 'Airport of Thailand Public Company Limited',
+    role: 'Internship',
+    period: 'November 2024 – March 2025',
+    description: 'Built a responsive E-Learning web application using ReactJS and Firebase and Implemented simple user authentication, course listing, and basic learning flow',
     bullets: [
-      'Duis aute irure dolor in reprehenderit in voluptate velit.',
-      'Esse cillum dolore eu fugiat nulla pariatur.',
+      'Project: E-Learning Website',
+      'Built a responsive E-Learning web application using ReactJS and Firebase and Implemented simple user authentication, course listing, and basic learning flow',
     ],
-    tags: ['Consectetur', 'Adipiscing', 'Elit'],
+    tags: ['React', 'Firebase', 'Javascript', 'HTML', 'CSS'],
   },
 ]
 
 // ── Skills ────────────────────────────────────────────────
 export const skills: Skill[] = [
-  { id: 'lorem',       name: 'Lorem',       category: 'Languages' },
-  { id: 'ipsum',       name: 'Ipsum',       category: 'Languages' },
-  { id: 'dolor',       name: 'Dolor',       category: 'Languages' },
-  { id: 'sit',         name: 'Sit',         category: 'Languages' },
-  { id: 'amet',        name: 'Amet',        category: 'Frameworks' },
-  { id: 'consectetur', name: 'Consectetur', category: 'Frameworks' },
-  { id: 'adipiscing',  name: 'Adipiscing',  category: 'Frameworks' },
-  { id: 'elit',        name: 'Elit',        category: 'Frameworks' },
-  { id: 'sed',         name: 'Sed',         category: 'Frameworks' },
+  { id: 'go', name: 'Go', category: 'Languages' },
+  { id: 'python', name: 'Python', category: 'Languages' },
+  { id: 'javascript', name: 'Javascript', category: 'Languages' },
+  { id: 'typescript', name: 'Typescript', category: 'Languages' },
+  { id: 'gin', name: 'Gin', category: 'Frameworks' },
+  { id: 'fiber', name: 'Fiber', category: 'Frameworks' },
+  { id: 'nextjs', name: 'Next.js', category: 'Frameworks' },
+  { id: 'react', name: 'React', category: 'Frameworks' },
+  { id: 'odoo', name: 'odoo', category: 'Frameworks' },
+  { id: 'docker', name: 'Docker', category: 'DevOps' },
+  { id: 'kubernetes', name: 'Kubernetes', category: 'DevOps' },
+  { id: 'github-actions', name: 'Github Actions', category: 'DevOps' },
+  { id: 'gitlab-ci-cd', name: 'GitLab CI/CD', category: 'DevOps' },
+  { id: 'argocd', name: 'ArgoCD', category: 'DevOps' },
 ]
 
 // ── Quotes ────────────────────────────────────────────────
 export const quotes: Quote[] = [
-  { id: '1', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', author: 'Lorem Ipsum' },
-  { id: '2', text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', author: 'Dolor Sit' },
-  { id: '3', text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', author: 'Amet Consectetur' },
+  { id: '1', text: 'just do it.', author: 'gain' },
 ]
 
 // ── Repos ─────────────────────────────────────────────────
@@ -101,79 +129,25 @@ export const repos: Repo[] = [
     language: 'TypeScript',
     languageColor: '#3178c6',
     tech: ['TypeScript', 'Next.js', 'Tailwind CSS'],
-    githubUrl: 'https://github.com',
+    githubUrl: 'https://github.com/Preechawut/chocolate-brownie',
   },
-  {
-    id: 'repo-2',
-    name: 'lorem-ipsum-api',
-    description: 'REST API for lorem ipsum generation with custom endpoints.',
-    language: 'Go',
-    languageColor: '#00ADD8',
-    tech: ['Go', 'PostgreSQL', 'Docker'],
-    githubUrl: 'https://github.com',
-  },
-  {
-    id: 'repo-3',
-    name: 'dolor-sit-cli',
-    description: 'Command-line tool for automating lorem ipsum workflows.',
-    language: 'Python',
-    languageColor: '#3572A5',
-    tech: ['Python', 'Click', 'SQLite'],
-    githubUrl: 'https://github.com',
-  },
+  // {
+  //   id: 'repo-2',
+  //   name: 'lorem-ipsum-api',
+  //   description: 'REST API for lorem ipsum generation with custom endpoints.',
+  //   language: 'Go',
+  //   languageColor: '#00ADD8',
+  //   tech: ['Go', 'PostgreSQL', 'Docker'],
+  //   githubUrl: 'https://github.com',
+  // },
+  // {
+  //   id: 'repo-3',
+  //   name: 'dolor-sit-cli',
+  //   description: 'Command-line tool for automating lorem ipsum workflows.',
+  //   language: 'Python',
+  //   languageColor: '#3572A5',
+  //   tech: ['Python', 'Click', 'SQLite'],
+  //   githubUrl: 'https://github.com',
+  // },
 ]
 
-// ── Projects ──────────────────────────────────────────────
-export const projects: Project[] = [
-  {
-    id: 'lorem-project-1',
-    name: 'Lorem Ipsum Project 1',
-    tagline: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    features: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      'Ut enim ad minim veniam, quis nostrud exercitation ullamco.',
-      'Laboris nisi ut aliquip ex ea commodo consequat.',
-    ],
-    tags: ['Lorem', 'Ipsum', 'Dolor', 'Sit'],
-    year: '2025',
-    href: '#',
-    emoji: '📦',
-  },
-  {
-    id: 'lorem-project-2',
-    name: 'Lorem Ipsum Project 2',
-    tagline: 'Duis aute irure dolor in reprehenderit in voluptate',
-    description:
-      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    features: [
-      'Duis aute irure dolor in reprehenderit in voluptate velit.',
-      'Esse cillum dolore eu fugiat nulla pariatur.',
-      'Excepteur sint occaecat cupidatat non proident.',
-      'Sunt in culpa qui officia deserunt mollit anim id est.',
-    ],
-    tags: ['Amet', 'Consectetur', 'Adipiscing'],
-    year: '2025',
-    href: '#',
-    emoji: '⚙️',
-  },
-  {
-    id: 'lorem-project-3',
-    name: 'Lorem Ipsum Project 3',
-    tagline: 'Excepteur sint occaecat cupidatat non proident',
-    description:
-      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-    features: [
-      'Ut enim ad minim veniam, quis nostrud exercitation.',
-      'Ullamco laboris nisi ut aliquip ex ea commodo.',
-      'Duis aute irure dolor in reprehenderit.',
-      'Velit esse cillum dolore eu fugiat.',
-    ],
-    tags: ['Elit', 'Sed', 'Do'],
-    year: '2025',
-    href: '#',
-    emoji: '🚀',
-  },
-]

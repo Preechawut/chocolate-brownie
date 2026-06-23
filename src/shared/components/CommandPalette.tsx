@@ -15,7 +15,7 @@ interface Command {
 
 const PAGE_SUBS: Record<string, string> = {
   '/':       'Introduction & overview',
-  '/work':   'Selected projects',
+  '/work':   'Career & experience',
   '/blog':   'Writing & notes',
   '/resume': 'Experience & skills',
 }

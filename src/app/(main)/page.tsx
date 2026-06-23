@@ -7,7 +7,6 @@ import { Repos } from '@/features/repos'
 import { QuoteCard } from '@/features/quotes/QuoteCard'
 import { getAllPosts } from '@/content/posts'
 import { quotes } from '@/content/data'
-import { PixelCat } from '@/shared/components/PixelCat'
 
 function SectionHeading({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
@@ -38,7 +37,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-2xl">
           <SectionHeading className="mb-5">Experience</SectionHeading>
           <div className="mt-0">
-            <Experience limit={3} />
+            <Experience limit={3} blurred simplified />
           </div>
           <div className="mt-8 flex justify-center">
             <Link
@@ -64,15 +63,21 @@ export default function HomePage() {
         <div className="mx-auto max-w-2xl">
           <div className="mb-6 flex items-center justify-between">
             <SectionHeading>Recent Posts</SectionHeading>
-            <Link href="/blog" className="text-[12px] font-bold text-t2 transition-colors hover:text-t1">
-              View all →
-            </Link>
+            {recentPosts.length > 0 && (
+              <Link href="/blog" className="text-[12px] font-bold text-t2 transition-colors hover:text-t1">
+                View all →
+              </Link>
+            )}
           </div>
-          <div className="flex flex-col gap-3">
-            {recentPosts.map((post) => (
-              <PostCard key={post.slug} post={post} />
-            ))}
-          </div>
+          {recentPosts.length > 0 ? (
+            <div className="flex flex-col gap-3">
+              {recentPosts.map((post) => (
+                <PostCard key={post.slug} post={post} />
+              ))}
+            </div>
+          ) : (
+            <p className="py-4 text-center text-sm text-t3">Coming soon...</p>
+          )}
         </div>
       </section>
 
@@ -85,12 +90,6 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Cat */}
-      <section className="border-t border-[var(--border)] px-6 py-6">
-        <div className="mx-auto max-w-2xl">
-          <PixelCat />
-        </div>
-      </section>
     </main>
   )
 }

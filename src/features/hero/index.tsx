@@ -165,7 +165,7 @@ export function Hero() {
           <h1 className="mb-4 text-[clamp(32px,5vw,64px)] font-bold leading-[0.95] tracking-normal text-t1">
             Hello,I'm <br />
             <span className="inline-block mt-3 bg-t1 text-bg px-6 py-2.5 uppercase tracking-wider">
-              {site.name}
+              {site.heroName}
             </span>
           </h1>
 

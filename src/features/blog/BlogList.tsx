@@ -7,6 +7,14 @@ import type { Post } from '@/content/posts'
 export function BlogList({ posts }: { posts: Post[] }) {
   const [active, setActive] = useState('All')
 
+  if (posts.length === 0) {
+    return (
+      <div className="py-10 text-center">
+        <p className="text-sm text-t3">Coming soon...</p>
+      </div>
+    )
+  }
+
   const allTags = ['All', ...Array.from(new Set(posts.flatMap((p) => p.tags))).sort()]
   const filtered = active === 'All' ? posts : posts.filter((p) => p.tags.includes(active))
 
